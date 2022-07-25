@@ -117,13 +117,14 @@ let s:lib.eaeff4     = { 'gui': '#eaeff4', 'cterm': 255 }
 let s:lib.f1f2f3     = { 'gui': '#f1f2f4', 'cterm': 255 }
 let s:lib.f6f8fa     = { 'gui': '#f6f8fa', 'cterm': 255 } " github inline code block bg
 let s:lib.fafbfc     = { 'gui': '#fafbfc', 'cterm': 255 } " github generic light
-let s:lib.white      = { 'gui': '#ffffff', 'cterm': 231 }
-let s:lib.base0      = { 'gui': '#24292e', 'cterm': 235 } " github text fg
+" let s:lib.base0      = { 'gui': '#24292e', 'cterm': 235 } " github text fg
+let s:lib.base0      = { 'gui': '#121420', 'cterm': 235 } " github text fg
 let s:lib.base05     = { 'gui': '#2b3137', 'cterm': 238 } " lightened from 0
 let s:lib.base05     = { 'gui': '#2d343a', 'cterm': 238 } " lightened from 0
 let s:lib.base1      = { 'gui': '#41484f', 'cterm': 238 } " lightened from 0
 let s:lib.base2      = { 'gui': '#6a737d', 'cterm': 243 } " github comment
 let s:lib.base3      = s:lib.numDarkest
+let s:lib.ghbg       = { 'gui': '#0c1117', 'cterm': 243 } " github bg
 
 let s:lib.darktext     = [
       \{ 'gui': '#fafbfc', 'cterm': 255 },
@@ -144,6 +145,7 @@ let s:colors.yellow         = { 'gui': '#ffffc5', 'cterm': 230 } " github search
 let s:colors.green          = { 'gui': '#22863a', 'cterm': 29  } " github syntax (html)
 let s:colors.boldgreen      = { 'gui': '#3ebc5c', 'cterm': 29  } " ^
 let s:colors.orange         = { 'gui': '#e36209', 'cterm': 166 } " github syntax
+let s:colors.orange2        = { 'gui': '#ffa657', 'cterm': 167 } " github syntax
 let s:colors.boldorange     = { 'gui': '#f18338', 'cterm': 166 } " ^
 let s:colors.lightgreen_nr  = { 'gui': '#cdffd8', 'cterm': 85  } " github diff
 let s:colors.lightgreen     = { 'gui': '#e6ffed', 'cterm': 85  } " github diff
@@ -155,7 +157,8 @@ let s:colors.difftext       = { 'gui': '#f2e496', 'cterm': 222 } " ^- darkened
 let s:colors.darkblue       = { 'gui': '#032f62', 'cterm': 17  } " ^- darkened
 let s:colors.blue           = { 'gui': '#005cc5', 'cterm': 26  } " github syntax
 let s:colors.blue0          = { 'gui': '#669cc2', 'cterm': 153 }
-let s:colors.blue1          = { 'gui': '#c1daec', 'cterm': 153 }
+" let s:colors.blue1          = { 'gui': '#c1daec', 'cterm': 153 }
+let s:colors.blue1          = { 'gui': '#a5d6ff', 'cterm': 153 }
 let s:colors.blue2          = { 'gui': '#e4effb', 'cterm': 153 }
 let s:colors.blue3          = { 'gui': '#bde0fb', 'cterm': 153 }
 let s:colors.blue4          = { 'gui': '#f1f8ff', 'cterm': 153 } " github diff folds
@@ -205,7 +208,8 @@ if s:is_dark
   let s:colors.grey2        = s:lib.base1
 
   let s:colors.uisplit      = s:lib.base2
-  let s:colors.bg           = s:lib.base0
+  " let s:colors.bg           = s:lib.base0
+  let s:colors.bg           = s:lib.ghbg
   let s:colors.fg           = s:lib.fafbfc
   let s:colors.gutter       = s:lib.base05
   let s:colors.endofbuf     = s:lib.base05
@@ -394,7 +398,8 @@ call s:Col('Constant', 'blue')
 call s:Col('String', 'darkblue')
 call s:Col('Function', 'purple')
 call s:Col('Statement', 'red')
-call s:Col('Type', 'red')
+" call s:Col('Type', 'red')
+call s:Col('Type', 'orange2')
 call s:Col('Todo', 'purple') | call s:Attr('Todo', 'underline')
 call s:Col('Special', 'purple')
 call s:Col('SpecialComment', 'base0')
@@ -493,6 +498,9 @@ hi link rubyInclude       PreProc
 
 " python
 hi link pythonBuiltin     Identifier
+hi link pythonClass       Type
+hi link pythonOperator    Identifier
+hi link pythonStatement   Statement
 
 " fatih/vim-go
 " you can enable more highlights from :h go-syntax
